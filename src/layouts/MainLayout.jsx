@@ -9,7 +9,7 @@ export default function MainLayout() {
         <Outlet />
       </main>
       <footer className="bg-slate-800 text-white text-center py-3 text-xs sm:text-sm">
-        © 2025 E-Commerce Simple App | Version 1.0
+        © 2026 Anya Pastry and Dessert | Version 1.0
       </footer>
     </div>
   );

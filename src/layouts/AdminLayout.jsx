@@ -25,7 +25,7 @@ export default function AdminLayout() {
         </main>
 
         <footer className="bg-white border-t p-4 text-center text-sm">
-          2025 My Admin App v1.0.0
+          © 2026 Anya Pastry and Dessert | Version 1.0
         </footer>
       </div>
     </div>
