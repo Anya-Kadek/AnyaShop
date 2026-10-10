@@ -1,13 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-
 export default function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
   const [quantity, setQuantity] = useState(1);
-
-  // Data produk pastry yang disesuaikan dengan 10 menu sebelumnya
   const products = {
     1: {
       name: "Classic Strawberry Cheesecake",
@@ -110,13 +107,11 @@ export default function ProductDetail() {
       label: "Refreshing",
     },
   };
-
   const product = products[id];
 
   if (!product) {
     return <p className="text-center mt-10 text-gray-500">Produk pastry tidak ditemukan.</p>;
   }
-
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -143,7 +138,6 @@ export default function ProductDetail() {
 
   return (
     <>
-      {/* POPUP BERHASIL DITAMBAHKAN */}
       {showPopup && (
         <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white w-[90%] max-w-sm rounded-2xl shadow-2xl p-6 text-center">
@@ -152,12 +146,10 @@ export default function ProductDetail() {
               <span className="text-3xl font-bold text-pink-500">✓</span>
             </div>
 
-            {/* JUDUL */}
             <h2 className="text-xl font-bold text-gray-800">
               Berhasil Ditambahkan!
             </h2>
 
-            {/* DESKRIPSI */}
             <p className="text-gray-600 text-sm mt-2">
               <span className="font-semibold text-pink-600">
                 {product.name}
@@ -165,7 +157,6 @@ export default function ProductDetail() {
               sudah masuk ke keranjang kamu.
             </p>
 
-            {/* BUTTON */}
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setShowPopup(false)}
@@ -185,7 +176,6 @@ export default function ProductDetail() {
         </div>
       )}
 
-      {/* DETAIL PRODUK */}
       <div className="max-w-4xl mx-auto px-4 pb-12">
         <div className="bg-pink-100 border border-pink-100 rounded-3xl p-6 md:p-8 shadow-sm">
           <div className="w-full aspect-square max-w-sm mx-auto rounded-2xl overflow-hidden bg-pink-50 flex items-center justify-center mb-6">
@@ -227,7 +217,6 @@ export default function ProductDetail() {
             Rp{product.price.toLocaleString("id-ID")}
           </p>
 
-          {/* KONTROL JUMLAH & TOMBOL */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-6 pt-6 border-t border-pink-50">
             <div className="flex items-center gap-4">
               <span className="font-semibold text-gray-700 text-sm">Jumlah</span>
