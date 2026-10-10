@@ -1,17 +1,13 @@
 import { useState, useEffect } from "react";
-
 export default function PesananPage() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const savedOrders = JSON.parse(localStorage.getItem("adminOrders")) || [];
-    
-    // Validasi data: Filter pesanan yang memiliki teks template rusak agar otomatis terhapus
     const cleanOrders = savedOrders.filter(
       o => o.product && !o.product.includes("\${")
     );
 
-    // Simpan kembali data yang sudah bersih ke localStorage
     localStorage.setItem("adminOrders", JSON.stringify(cleanOrders));
     setOrders(cleanOrders);
   }, []);
