@@ -1,13 +1,11 @@
 export default function AdminDashboard() {
   return (
     <div className="space-y-6">
-      {/* Banner Sambutan */}
-      <div className="bg-white p-8 rounded-3xl shadow-md shadow-pink-100/50 border border-pink-100/80">
+     <div className="bg-white p-8 rounded-3xl shadow-md shadow-pink-100/50 border border-pink-100/80">
         <h1 className="text-3xl font-extrabold text-gray-800 mb-2">Dashboard Admin Anya Pastry and Dessert</h1>
         <p className="text-gray-500 text-sm">Selamat datang kembali! Kelola inventori, pesanan, dan pantau aktivitas toko dengan mudah.</p>
       </div>
 
-      {/* Grid Statistik Kartu */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div className="bg-white p-6 rounded-3xl shadow-md shadow-pink-100/50 border border-pink-100/80">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Menu Aktif</p>
@@ -23,7 +21,6 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* Informasi Tambahan */}
       <div className="bg-white p-8 rounded-3xl shadow-md shadow-pink-100/50 border border-pink-100/80">
         <h2 className="font-bold text-gray-800 text-lg mb-2">Aktivitas Sistem Terkini</h2>
         <p className="text-gray-600 text-sm leading-relaxed">
