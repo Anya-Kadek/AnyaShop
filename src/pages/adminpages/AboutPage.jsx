@@ -1,15 +1,12 @@
 export default function AboutPage() {
   return (
     <div className="space-y-6">
-      {/* Header Halaman */}
       <div className="bg-white p-8 rounded-3xl shadow-md shadow-pink-100/50 border border-pink-100/80">
         <h1 className="text-3xl font-extrabold text-gray-800 mb-2">Tentang Aplikasi</h1>
         <p className="text-gray-500 text-sm">Informasi seputar panel administrasi dan profil sistem Anya Pastry and Dessert.</p>
       </div>
 
-      {/* Grid Informasi */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Kartu Profil Toko */}
         <div className="bg-white p-8 rounded-3xl shadow-md shadow-pink-100/50 border border-pink-100/80 space-y-4">
           <div className="w-12 h-12 bg-pink-100 rounded-2xl flex items-center justify-center text-2xl shadow-inner">🍰</div>
           <h2 className="text-xl font-bold text-gray-800">Anya Pastry & Dessert</h2>
@@ -23,7 +20,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Kartu Informasi Pengembang / Tim */}
         <div className="bg-white p-8 rounded-3xl shadow-md shadow-pink-100/50 border border-pink-100/80 space-y-4">
           <div className="w-12 h-12 bg-pink-100 rounded-2xl flex items-center justify-center text-2xl shadow-inner">💻</div>
           <h2 className="text-xl font-bold text-gray-800">Informasi Pengembang</h2>
