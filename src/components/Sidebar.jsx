@@ -1,18 +1,16 @@
 import { Link, useLocation } from "react-router-dom";
-
 export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
-  const location = useLocation();
-  const isActive = (path) => location.pathname === path;
+const location = useLocation();
+const isActive = (path) => location.pathname === path;
 
   return (
     <div
-      className={`${
-        sidebarOpen ? "block" : "hidden"
+      className={`${ sidebarOpen ? "block" : "hidden"
       } md:block w-72 bg-pink-200 border-r border-pink-100 flex flex-col shrink-0 shadow-lg shadow-pink-50/50`}
     >
-      <div className="p-6 font-extrabold text-xl text-[#e91e63] border-b border-pink-100">
-        Anya Admin
-      </div>
+    <div className="p-6 font-extrabold text-xl text-[#e91e63] border-b border-pink-100">
+       Anya Admin
+   </div>
 
       <nav className="flex flex-col p-4 space-y-2 flex-1">
         <Link 
