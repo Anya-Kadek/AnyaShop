@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 export default function Checkout() {
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
@@ -11,28 +10,22 @@ export default function Checkout() {
     payment: "Transfer Bank",
   });
   const [successPopup, setSuccessPopup] = useState(false);
-
-  // Ambil data keranjang untuk menghitung total belanja di halaman checkout
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(savedCart);
   }, []);
 
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.address || !formData.phone) {
       alert("Mohon lengkapi semua data pengiriman!");
       return;
     }
-
-    // Penulisan ringkasan produk yang aman tanpa error string
     const productSummary = cart.length > 0 
       ? cart[0].name + " (x" + (cart[0].quantity || 1) + ")" + (cart.length > 1 ? " dan " + (cart.length - 1) + " item lainnya" : "")
       : "Paket Pastry Spesial";
 
-    // Format objek pesanan baru untuk admin
     const newOrder = {
       id: "ORD" + Math.floor(1000 + Math.random() * 9000),
       customer: formData.name,
@@ -41,19 +34,14 @@ export default function Checkout() {
       date: new Date().toLocaleDateString("id-ID", { day: 'numeric', month: 'long', year: 'numeric' }),
       status: "Pending"
     };
-
-    // Simpan ke localStorage agar langsung terbaca di halaman Pesanan Admin
     const existingOrders = JSON.parse(localStorage.getItem("adminOrders")) || [];
     localStorage.setItem("adminOrders", JSON.stringify([newOrder, ...existingOrders]));
-
-    // Kosongkan keranjang setelah order berhasil
     localStorage.removeItem("cart");
     setSuccessPopup(true);
   };
 
   return (
     <>
-      {/* POPUP SUKSES PESANAN */}
       {successPopup && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white w-full max-w-sm rounded-3xl shadow-2xl p-6 text-center">
@@ -73,8 +61,6 @@ export default function Checkout() {
           </div>
         </div>
       )}
-
-      {/* HALAMAN CHECKOUT UTAMA */}
       <div className="max-w-2xl mx-auto p-6">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold mb-2">Checkout Pesanan Anya Pastry and Dessert 📋</h1>
@@ -82,7 +68,6 @@ export default function Checkout() {
         </div>
 
         <div className="bg-white border border-pink-100 rounded-2xl p-6 md:p-8 shadow-sm">
-          {/* Ringkasan Singkat Total Belanja */}
           <div className="bg-pink-50 rounded-xl p-4 mb-6 flex justify-between items-center">
             <span className="text-sm font-semibold text-gray-700">Total yang harus dibayar:</span>
             <span className="text-lg font-bold text-pink-600">
