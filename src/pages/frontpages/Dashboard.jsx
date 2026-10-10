@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductCard from '../../components/ProductCard';
-
 export default function Dashboard() {
   const pastryProducts = [
     {
@@ -94,7 +93,6 @@ export default function Dashboard() {
       image: "/images/Berry Pink Smoothie Cup.jpg"
     }
   ];
-
   return (
     <div className="space-y-6 pb-12">
       <div>
@@ -102,7 +100,6 @@ export default function Dashboard() {
         <p className="text-gray-600">Pilihan menu kue, roti, dan minuman segar buatan tangan setiap hari.</p>
       </div>
 
-      {/* Grid Layout Responsif yang merender komponen ProductCard */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {pastryProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
