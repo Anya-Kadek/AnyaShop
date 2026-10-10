@@ -1,15 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 export default function Cart() {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
 
-  // Ambil data keranjang dari localStorage dan pastikan path gambar valid
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    
-    // Auto-fix path gambar jika ada data lama yang kurang pas
     const fixedCart = savedCart.map((item) => {
       let imgPath = item.image || "";
       if (imgPath && !imgPath.startsWith("/")) {
@@ -20,28 +16,22 @@ export default function Cart() {
 
     setCart(fixedCart);
   }, []);
-
-  // Fungsi untuk mengubah jumlah (quantity) item
   const updateQuantity = (id, delta) => {
     const updatedCart = cart.map((item) => {
       if (item.id === id) {
         const newQty = item.quantity + delta;
         return { ...item, quantity: newQty > 0 ? newQty : 1 };
-      }
-      return item;
+      } return item;
     });
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
-
-  // Fungsi untuk menghapus item dari keranjang
   const removeItem = (id) => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  // Hitung total keseluruhan harga
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
@@ -49,7 +39,6 @@ export default function Cart() {
       <h1 className="text-2xl md:text-3xl font-black text-gray-800 mb-6">
         🛒 Keranjang Belanja Anya Pastry and Dessert
       </h1>
-
       {cart.length === 0 ? (
         <div className="bg-white border border-pink-100 rounded-3xl p-8 text-center shadow-sm">
           <p className="text-gray-500 mb-4">Keranjang belanjaan kamu masih kosong nih.</p>
@@ -83,7 +72,6 @@ export default function Cart() {
                 </div>
 
                 <div className="flex items-center justify-between w-full sm:w-auto gap-6">
-                  {/* Kontrol Qty */}
                   <div className="flex items-center border border-pink-200 rounded-xl overflow-hidden bg-pink-50/50">
                     <button
                       onClick={() => updateQuantity(item.id, -1)}
@@ -102,12 +90,10 @@ export default function Cart() {
                     </button>
                   </div>
 
-                  {/* Total per item */}
                   <span className="font-extrabold text-gray-800 text-sm w-28 text-right">
                     Rp{(item.price * item.quantity).toLocaleString("id-ID")}
                   </span>
 
-                  {/* Tombol Hapus */}
                   <button
                     onClick={() => removeItem(item.id)}
                     className="text-gray-400 hover:text-red-500 transition text-lg"
@@ -120,7 +106,6 @@ export default function Cart() {
             ))}
           </div>
 
-          {/* Ringkasan & Tombol Checkout */}
           <div className="bg-white border border-pink-100 rounded-3xl p-6 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4">
             <div>
               <p className="text-gray-500 text-xs">Total Pembayaran:</p>
